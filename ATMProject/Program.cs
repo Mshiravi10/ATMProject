@@ -24,17 +24,24 @@ namespace ATMProject
 			{
 				Console.WriteLine("PLEASE ENTER YOU CRAD NUMBER!!");
 				string cardNumberStr = Console.ReadLine();
-				long cardNumber = Utility.StringToLong(cardNumberStr);
-				Console.WriteLine($"\n{cardNumber} Is it Your Card? Press 1 for Yes, 2 for No!!");
-				string isItMyCard = Console.ReadLine();
-				if (isItMyCard == "1")
+				if (long.TryParse(cardNumberStr,out long CardNumber))
 				{
-					isCardCorrect = true;
+					Console.WriteLine($"\n{CardNumber} Is it Your Card? Press 1 for Yes, 2 for No!!");
+					string isItMyCard = Console.ReadLine();
+					if (isItMyCard == "1")
+					{
+						isCardCorrect = true;
+					}
+					else if (isItMyCard != "2")
+					{
+						Console.WriteLine("Invalid input. Please try again.");
+					}
 				}
-				else if (isItMyCard != "2")
+				else
 				{
-					Console.WriteLine("Invalid input. Please try again.");
+					Console.WriteLine("Invalid input. Please enter a valid number.");
 				}
+				
 			}
 
 		}
